@@ -4,26 +4,25 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
   end
-  
+
   def new
-    @post= current_user.posts.build
+    @post = current_user.posts.build
   end
 
   def create
-    @post= current_user.posts.build(post_params)
+    @post = current_user.posts.build(post_params)
 
     if @post.save
-      flash[:notice] = "Post was successfully created"
+      flash[:notice] = 'Post was successfully created'
       redirect_to root_path
     else
       render 'new'
     end
-
   end
 
+  private
 
-  private 
   def post_params
-     params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body)
   end
 end
