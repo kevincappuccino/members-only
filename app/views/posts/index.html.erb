@@ -1,0 +1,19 @@
+<h1>Listing all posts: </h1>
+
+<p>
+<%= link_to 'Create new post', new_post_path %>
+</p>
+<table>
+<tr>
+  <th>Title</th>
+  <th>Body</th>
+</tr>
+  <% @posts.each do |post|%>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= post.description %></td>
+      <td><%= link_to 'Edit', edit_post_path(post) %></td>
+      <td><%= link_to 'Show', post_path(post)%></td>
+    </tr>
+  <%end%>
+</table>
