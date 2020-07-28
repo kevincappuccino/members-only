@@ -16,6 +16,13 @@
     <% if flash[ :alert]%>
       <%= alert %>
     <% end %>
+
+    <% if user_signed_in? %>
+      <%= link_to current_user.username, edit_user_registration_path, class: 'btn btn-info' %>
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-info' %>
+    <% else %>
+      <%= link_to 'Sign in', new_user_session_path %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

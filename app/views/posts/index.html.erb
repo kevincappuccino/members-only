@@ -7,8 +7,12 @@
     <h5 class="card-title"><%=post.title%></h5>
     <p class="card-text"><%=post.body%></p>
     <%= link_to 'View details', post_path(post), class: 'btn btn-primary' %>
-    <% if signed_in? %>
+    <% if user_signed_in? %>
+      
+    <% else %>
+      
     <% end %>
+      
   </div>
 
 </div>
