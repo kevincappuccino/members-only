@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MembersOnly</title>
+    <%= favicon_link_tag image_path('favicon.png') %>
+    <title>Connect</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,36 +12,33 @@
 
   <body>
     <header class="header">
-    <div class="container-fluid">
-    <nav class="navbar">
-      <div class="navbar-brand">
-        <%= link_to new_post_path do %>
-          <%= image_tag('logo.png', width: '100') %>
+      <nav class="navbar">
+        <div class="navbar-brand">
+          <%= link_to root_path do %>
+            <%= image_tag('logo.png', width: '100') %>
+          <% end %>
+        </div>
+        <% if user_signed_in? %>
+          <%= link_to 'Edit user', edit_user_registration_path, class: 'btn btn-info' %>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-info' %>
+        <% else %>
+          <%= link_to 'Login', new_user_session_path %>
         <% end %>
-      </div>
-      <ul class="navbar-nav">
-        <%= link_to  %>
-      </ul>
-    </nav>
-  </header>
-    <main>
+      </nav>
+    </header>
+    <main class="container">
+        <% if flash[ :notice] %>
+          <div class="alert alert-success" role="alert">
+            <%= notice %>
+          </div>
+        <% end %>
+        <% if flash[ :alert]%>
+          <div class="alert alert-success" role="alert">
+            <%= alert %>
+          </div>
+        <% end %>
       <%= yield %>
     </main>
     <footer></footer>
-
-    <% if flash[ :notice] %>
-      <%= notice %>
-    <% end %>
-    <% if flash[ :alert]%>
-      <%= alert %>
-    <% end %>
-
-    <% if user_signed_in? %>
-      <%= link_to current_user.username, edit_user_registration_path, class: 'btn btn-info' %>
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-info' %>
-    <% else %>
-      <%= link_to 'Sign in', new_user_session_path %>
-    <% end %>
-    
   </body>
 </html>

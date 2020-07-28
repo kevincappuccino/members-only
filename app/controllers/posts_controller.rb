@@ -24,33 +24,11 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
   
-  def edit
-    @post = Post.find(params[:id])
-  end
-
-  def update
-    @post = Post.find(params[:id])
-    if @post.update(post_params)
-      flash[:notice] = "post was successfully updated"
-      redirect_to post_path(@post)
-    else
-      render 'edit'
-    end
-  end
-
-  def destroy
-    @post = Post.find(params[:id])
-    if @post.destroy
-      flash[:success] = 'Object was successfully deleted.'
-      redirect_to root_path
-    else
-      flash[:error] = 'Something went wrong'
-      redirect_to root_path
-    end
-  end
-  
-
   private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
   def post_params
     params.require(:post).permit(:title, :body)
