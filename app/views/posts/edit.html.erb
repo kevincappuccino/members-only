@@ -8,7 +8,6 @@
 <% end %>
 
 <%= form_with model:@post, local: true do |f|%>
-<div class="container w-50 pt-5">
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, autofocus: true, autocomplete: 'title', class: 'form-control' %>
@@ -22,6 +21,5 @@
   <div class="form-group">
     <%= f.submit 'submit', class: 'btn btn-success' %>
     <%= link_to 'Back to posts listing', posts_path %>
-  </div>
   </div>
 <% end %>

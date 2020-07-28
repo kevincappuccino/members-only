@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy]
   before_action :authenticate_user!, except: %i[index show]
   def index
     @posts = Post.all
@@ -21,6 +20,23 @@ class PostsController < ApplicationController
 
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+  
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      flash[:notice] = "post was successfully updated"
+      redirect_to post_path(@post)
+    else
+      render 'edit'
+    end
+  end
 
   private 
   def post_params

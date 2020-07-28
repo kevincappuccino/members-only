@@ -1,17 +1,15 @@
-<h1>Listing all posts: </h1>
-
 <p>
-<%= link_to 'Create new post', new_post_path %>
+  <%= link_to 'Create new post', new_post_path, class: 'btn btn-primary' %>
 </p>
-<table>
-<tr>
-  <th>Title</th>
-  <th>Body</th>
-</tr>
-  <% @posts.each do |post|%>
-    <tr>
-      <td><%= post.title %></td>
-      <td><%= post.body %></td>
-    </tr>
-  <%end%>
-</table>
+<% @posts.each do |post|%>
+<div class="card container">
+  <div class="card-body ">
+    <h5 class="card-title"><%=post.title%></h5>
+    <p class="card-text"><%=post.body%></p>
+    <%= link_to 'View details', post_path(post), class: 'btn btn-primary' %>
+    <% if signed_in? %>
+    <% end %>
+  </div>
+
+</div>
+<% end %>
