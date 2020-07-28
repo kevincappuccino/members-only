@@ -1,0 +1,7 @@
+<h1>Create a New Post</h1>
+
+<% if user_signed_in? %>
+      <%= render 'form' %>
+    <% else %>
+      <%= redirect_to new_session_path %>
+    <% end %>

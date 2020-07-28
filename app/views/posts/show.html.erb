@@ -1,0 +1,11 @@
+<h1>Showing selected post</h1>
+
+<div class="jumbotron">
+  <% if signed_in? %> 
+    <small class="text-muted">Author: <%= @post.user.username %></small>
+  <% end %>
+    <h1 class="display-4"><%= @post.title %></h1>
+  <hr class="my-4">
+  <p><%= @post.body %></p>
+</div>
+<%= link_to 'Back to posts listing', posts_path %>
