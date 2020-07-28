@@ -6,9 +6,7 @@
   <div class="card container">
     <div class="card-body ">
       <h5 class="card-title"><%=post.title%></h5>
-      <% if signed_in? %>
-        <small class="text-muted">Author: <%= post.user.username %></small>
-      <% end %>
+        <small class="text-muted"><%= check_login(post) %></small>
       <p class="card-text"><%=post.body%></p>
     </div>
   </div>

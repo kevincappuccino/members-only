@@ -1,15 +1,10 @@
 <h1>Create a New Post</h1>
-  <% if @post.errors.any? %>
-    <p>The following errors prevented post from getting created</p>
+
+  <% check_errors(@post)%>
     <ul>
     <% @post.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <%end%>
     </ul>
-  <%end%>
 
-<% if user_signed_in? %>
-      <%= render 'form' %>
-    <% else %>
-      <%= redirect_to new_session_path %>
-    <% end %>
+<%= check_user_login %>
