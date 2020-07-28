@@ -1,22 +1,16 @@
 <div class="container">
-<p>
-  <%= link_to 'Create new post', new_post_path, class: 'btn btn-primary' %>
-</p>
-<% @posts.each do |post|%>
-<div class="card container">
-  <div class="card-body ">
-    <h5 class="card-title"><%=post.title%></h5> <% if signed_in? %> <small class="text-muted">Author: <%= post.user.username %></small>
-    <% end %>
-    <p class="card-text"><%=post.body%></p>
-    <%= link_to 'View post', post_path(post), class: 'btn btn-primary' %>
-    <% if current_user %>
-      
-    <% else %>
-      
-    <% end %>
-      
+  <p>
+    <%= link_to 'Create new post', new_post_path, class: 'btn btn-primary' %>
+  </p>
+  <% @posts.each do |post|%>
+  <div class="card container">
+    <div class="card-body ">
+      <h5 class="card-title"><%=post.title%></h5>
+      <% if signed_in? %>
+        <small class="text-muted">Author: <%= post.user.username %></small>
+      <% end %>
+      <p class="card-text"><%=post.body%></p>
+    </div>
   </div>
-
-</div>
-<% end %>
+  <% end %>
 </div>
