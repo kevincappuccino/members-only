@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
-gem 'devise'
 gem 'bootstrap', '~> 4.0.0'
+gem 'devise'
 gem 'jquery-rails'
 gem 'rubocop', '~>0.81.0'
 
