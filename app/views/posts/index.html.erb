@@ -1,0 +1,14 @@
+<div class="container">
+  <p>
+    <%= link_to 'Create new post', new_post_path, class: 'btn btn-primary' %>
+  </p>
+  <% @posts.each do |post|%>
+  <div class="card container">
+    <div class="card-body ">
+      <h5 class="card-title"><%=post.title%></h5>
+        <small class="text-muted"><%= check_login(post) %></small>
+      <p class="card-text"><%=post.body%></p>
+    </div>
+  </div>
+  <% end %>
+</div>

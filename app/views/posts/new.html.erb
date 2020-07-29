@@ -1,0 +1,10 @@
+<h1>Create a New Post</h1>
+
+  <% check_errors(@post)%>
+    <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <%end%>
+    </ul>
+
+<%= check_user_login %>
